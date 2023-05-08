@@ -29,7 +29,6 @@ public class Cinema {
                 default -> System.out.println("Unknown command.");
             }
         }
-//        System.out.printf("Total income: %n$%d", getTotalIncome());
     }
 
     private static void buyaTicket() {
