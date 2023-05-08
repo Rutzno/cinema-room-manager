@@ -29,7 +29,6 @@ public class Cinema {
         room[x-1][y-1] = 'B';
         System.out.printf("%nTicket price: $%d%n", getTicketPrice(x));
         displayRoom();
-//        System.out.printf("Total income: %n$%d", getTotalIncome());
     }
 
     private static int getTicketPrice(int x) {
