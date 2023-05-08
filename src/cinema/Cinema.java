@@ -1,5 +1,11 @@
 package cinema;
 
+/**
+ * @author Mack_TB
+ * @since 4/05/2023
+ * @version 1.0.1
+ */
+
 public class Cinema {
 
     public static void main(String[] args) {
