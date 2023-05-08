@@ -3,7 +3,7 @@ package cinema;
 /**
  * @author Mack_TB
  * @since 4/05/2023
- * @version 1.0.2
+ * @version 1.0.3
  */
 
 import java.util.Arrays;
