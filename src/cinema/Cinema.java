@@ -81,8 +81,8 @@ public class Cinema {
         System.out.print("Enter the number of seats in each row:\n> ");
         int seatsInRow = sc.nextInt(); // number of seats in each row
         room = new char[rows][seatsInRow];
-        for (int i = 0; i < room.length; i++) {
-            Arrays.fill(room[i], 'S');
+        for (char[] chars : room) {
+            Arrays.fill(chars, 'S');
         }
     }
 
