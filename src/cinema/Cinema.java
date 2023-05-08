@@ -3,14 +3,17 @@ package cinema;
 /**
  * @author Mack_TB
  * @since 4/05/2023
- * @version 1.0.4
+ * @version 1.0.5
  */
+
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Cinema {
     static char[][] room;
+    static int numOfBoughtTickets = 0;
+    static int currentIncome = 0;
     static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -23,6 +26,7 @@ public class Cinema {
             switch (option) {
                 case 1 -> displayRoom();
                 case 2 -> buyaTicket();
+                case 3 -> statistics();
                 case 0 -> {
                     return;
                 }
@@ -32,12 +36,28 @@ public class Cinema {
     }
 
     private static void buyaTicket() {
-        System.out.print("\nEnter a row number:\n> ");
-        int x = sc.nextInt();
-        System.out.print("Enter a seat number in that row:\n> ");
-        int y = sc.nextInt();
+        int x, y;
+        while (true) {
+            System.out.print("\nEnter a row number:\n> ");
+            x = sc.nextInt();
+            System.out.print("Enter a seat number in that row:\n> ");
+            y = sc.nextInt();
+            if (x <= 0 || x > room.length || y <= 0 || y > room.length) {
+                System.out.println("\nWrong input!");
+            } else if (isSeatTaken(x, y)){
+                System.out.println("\nThat ticket has already been purchased!");
+            } else {
+                break;
+            }
+        }
         room[x-1][y-1] = 'B';
         System.out.printf("Ticket price: $%d%n", getTicketPrice(x));
+        numOfBoughtTickets++;
+        currentIncome += getTicketPrice(x);
+    }
+
+    private static boolean isSeatTaken(int x, int y) {
+        return room[x - 1][y - 1] == 'B';
     }
 
     private static int getTicketPrice(int x) {
@@ -81,8 +101,8 @@ public class Cinema {
         System.out.print("Enter the number of seats in each row:\n> ");
         int seatsInRow = sc.nextInt(); // number of seats in each row
         room = new char[rows][seatsInRow];
-        for (char[] chars : room) {
-            Arrays.fill(chars, 'S');
+        for (int i = 0; i < room.length; i++) {
+            Arrays.fill(room[i], 'S');
         }
     }
 
@@ -102,10 +122,20 @@ public class Cinema {
         }
     }
 
+    private static void statistics() {
+        int totalSeats = room.length * room[0].length;
+        float p = 100.0f * numOfBoughtTickets / totalSeats;
+        System.out.printf("%nNumber of purchased tickets: %d%n", numOfBoughtTickets);
+        System.out.printf("Percentage: %.2f%%%n", p);
+        System.out.printf("Current income: $%d%n", currentIncome);
+        System.out.printf("Total income: $%d%n", getTotalIncome());
+    }
+
     private static void menu() {
         System.out.println("""
                \n1. Show the seats
                2. Buy a ticket
+               3. Statistics
                0. Exit""");
     }
 }
