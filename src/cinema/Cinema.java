@@ -25,7 +25,7 @@ public class Cinema {
             option = sc.nextInt();
             switch (option) {
                 case 1 -> displayRoom();
-                case 2 -> buyaTicket();
+                case 2 -> buyATicket();
                 case 3 -> statistics();
                 case 0 -> {
                     return;
@@ -35,7 +35,7 @@ public class Cinema {
         }
     }
 
-    private static void buyaTicket() {
+    private static void buyATicket() {
         int x, y;
         while (true) {
             System.out.print("\nEnter a row number:\n> ");
