@@ -50,7 +50,7 @@ public class Cinema {
                 break;
             }
         }
-        room[x-1][y-1] = 'B';
+        room[x - 1][y-1] = 'B';
         System.out.printf("Ticket price: $%d%n", getTicketPrice(x));
         numOfBoughtTickets++;
         currentIncome += getTicketPrice(x);
