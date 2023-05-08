@@ -37,19 +37,19 @@ public class Cinema {
 
     private static void buyaTicket() {
         int x, y;
-        do {
+        while (true) {
             System.out.print("\nEnter a row number:\n> ");
             x = sc.nextInt();
             System.out.print("Enter a seat number in that row:\n> ");
             y = sc.nextInt();
             if (x <= 0 || x > room.length || y <= 0 || y > room.length) {
                 System.out.println("\nWrong input!");
-            } else if (isSeatTaken(x, y)) {
+            } else if (isSeatTaken(x, y)){
                 System.out.println("\nThat ticket has already been purchased!");
             } else {
                 break;
             }
-        } while (true);
+        }
         room[x - 1][y - 1] = 'B';
         System.out.printf("Ticket price: $%d%n", getTicketPrice(x));
         numOfBoughtTickets++;
