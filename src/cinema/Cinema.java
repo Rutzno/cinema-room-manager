@@ -3,32 +3,44 @@ package cinema;
 /**
  * @author Mack_TB
  * @since 4/05/2023
- * @version 1.0.3
+ * @version 1.0.4
  */
+
+
 
 import java.util.Arrays;
 import java.util.Scanner;
 
 public class Cinema {
     static char[][] room;
+    static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        System.out.print("Enter the number of rows:\n> ");
-        int rows = sc.nextInt(); // number of rows
-        System.out.print("Enter the number of seats in each row:\n> ");
-        int seatsInRow = sc.nextInt(); // number of seats in each row
+        initRoom();
+        int option;
+        while (true) {
+            menu();
+            System.out.print("> ");
+            option = sc.nextInt();
+            switch (option) {
+                case 1 -> displayRoom();
+                case 2 -> buyaTicket();
+                case 0 -> {
+                    return;
+                }
+                default -> System.out.println("Unknown command.");
+            }
+        }
+//        System.out.printf("Total income: %n$%d", getTotalIncome());
+    }
 
-        initRoom(rows, seatsInRow);
-        displayRoom();
-
+    private static void buyaTicket() {
         System.out.print("\nEnter a row number:\n> ");
         int x = sc.nextInt();
         System.out.print("Enter a seat number in that row:\n> ");
         int y = sc.nextInt();
         room[x-1][y-1] = 'B';
-        System.out.printf("%nTicket price: $%d%n", getTicketPrice(x));
-        displayRoom();
+        System.out.printf("Ticket price: $%d%n", getTicketPrice(x));
     }
 
     private static int getTicketPrice(int x) {
@@ -66,7 +78,11 @@ public class Cinema {
         return totalIncome;
     }
 
-    private static void initRoom(int rows, int seatsInRow) {
+    private static void initRoom() {
+        System.out.print("Enter the number of rows:\n> ");
+        int rows = sc.nextInt(); // number of rows
+        System.out.print("Enter the number of seats in each row:\n> ");
+        int seatsInRow = sc.nextInt(); // number of seats in each row
         room = new char[rows][seatsInRow];
         for (int i = 0; i < room.length; i++) {
             Arrays.fill(room[i], 'S');
@@ -87,5 +103,12 @@ public class Cinema {
             }
             System.out.println();
         }
+    }
+
+    private static void menu() {
+        System.out.println("""
+               \n1. Show the seats
+               2. Buy a ticket
+               0. Exit""");
     }
 }
