@@ -21,12 +21,17 @@ public class Cinema {
             System.out.print("> ");
             option = sc.nextInt();
             switch (option) {
-                case 1 -> displayRoom();
-                case 2 -> buyaTicket();
-                case 0 -> {
+                case 1:
+                    displayRoom();
+                    break;
+                case 2:
+                    buyaTicket();
+                    break;
+                case 0:
                     return;
-                }
-                default -> System.out.println("Unknown command.");
+                default:
+                    System.out.println("Unknown command.");
+                    break;
             }
         }
 //        System.out.printf("Total income: %n$%d", getTotalIncome());
