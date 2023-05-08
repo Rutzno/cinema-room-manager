@@ -6,7 +6,6 @@ package cinema;
  * @version 1.0.2
  */
 
-
 import java.util.Arrays;
 import java.util.Scanner;
 
