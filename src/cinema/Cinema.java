@@ -20,7 +20,7 @@ public class Cinema {
         int seatsInRow = sc.nextInt(); // number of seats in each row
 
         initRoom(rows, seatsInRow);
-        display();
+        displayRoom();
 
         System.out.print("\nEnter a row number:\n> ");
         int x = sc.nextInt();
@@ -28,7 +28,7 @@ public class Cinema {
         int y = sc.nextInt();
         room[x-1][y-1] = 'B';
         System.out.printf("%nTicket price: $%d%n", getTicketPrice(x));
-        display();
+        displayRoom();
 //        System.out.printf("Total income: %n$%d", getTotalIncome());
     }
 
@@ -74,7 +74,7 @@ public class Cinema {
         }
     }
 
-    private static void display() {
+    private static void displayRoom() {
         System.out.println("\nCinema:");
         System.out.print(" ");
         for (int i = 0; i < room[0].length; i++) {
