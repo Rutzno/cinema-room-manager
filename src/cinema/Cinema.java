@@ -57,8 +57,7 @@ public class Cinema {
     }
 
     private static boolean isSeatTaken(int x, int y) {
-        if (room[x - 1][y - 1] == 'B') return true;
-        else return false;
+        return room[x - 1][y - 1] == 'B';
     }
 
     private static int getTicketPrice(int x) {
