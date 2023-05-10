@@ -18,7 +18,7 @@ public class Cinema {
 
     public static void main(String[] args) {
         initRoom();
-        int option;
+        byte option;
         while (true) {
             menu();
             System.out.print("> ");
