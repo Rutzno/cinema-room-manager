@@ -22,7 +22,7 @@ public class Cinema {
         while (true) {
             menu();
             System.out.print("> ");
-            option = sc.nextInt();
+            option = sc.nextByte();
             switch (option) {
                 case 1 -> displayRoom();
                 case 2 -> buyATicket();
