@@ -5,6 +5,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+/**
+ * @author Mack_TB
+ * @since 1/06/2023
+ * @version 1.0.22
+ */
+
 @RestController
 public class CinemaController {
     private Cinema cinema;
