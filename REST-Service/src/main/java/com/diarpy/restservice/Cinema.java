@@ -6,6 +6,12 @@ import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 
+/**
+ * @author Mack_TB
+ * @since 1/06/2023
+ * @version 1.0.11
+ */
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
