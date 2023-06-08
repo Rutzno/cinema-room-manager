@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 /**
  * @author Mack_TB
  * @since 1/06/2023
- * @version 1.0.11
+ * @version 1.0.22
  */
 
 @Data
@@ -16,4 +16,5 @@ import lombok.NoArgsConstructor;
 public class Seat {
     private int row;
     private int column;
+    private int price;
 }
