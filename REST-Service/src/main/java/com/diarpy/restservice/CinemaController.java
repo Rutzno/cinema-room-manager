@@ -1,4 +1,4 @@
-package cinema;
+package com.diarpy.restservice;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
