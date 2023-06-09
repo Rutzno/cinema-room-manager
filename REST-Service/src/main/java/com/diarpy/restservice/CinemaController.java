@@ -5,6 +5,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+/**
+ * @author Mack_TB
+ * @since 1/06/2023
+ * @version 1.0.33
+ */
+
 @RestController
 public class CinemaController {
     private Cinema cinema;
