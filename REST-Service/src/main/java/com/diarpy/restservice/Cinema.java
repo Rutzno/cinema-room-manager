@@ -45,8 +45,8 @@ public class Cinema {
                 ticket.getColumn() <= 0 || ticket.getColumn() > totalColumns;
     }
 
-    public boolean isSeatTaken(Ticket ticket) {
-        for(Ticket t: availableSeats) {
+    public boolean isSeatTaken(Seat ticket) {
+        for(Seat t: availableSeats) {
             if (t.getRow() == ticket.getRow() && t.getColumn() == ticket.getColumn()) {
                 return false;
             }
