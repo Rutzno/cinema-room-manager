@@ -82,7 +82,7 @@ public class Cinema {
         return result;
     }
 
-
+    @JsonIgnore
     public Statistics getStatistics() {
         Statistics stats = new Statistics();
         stats.setNumberOfAvailableSeats(availableSeats.size());
