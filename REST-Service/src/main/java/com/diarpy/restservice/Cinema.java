@@ -11,7 +11,7 @@ import java.util.UUID;
 /**
  * @author Mack_TB
  * @since 1/06/2023
- * @version 1.0.33
+ * @version 1.0.44
  */
 
 @Data
@@ -80,5 +80,18 @@ public class Cinema {
             takenSeats.remove(result);
         }
         return result;
+    }
+
+
+    public Statistics getStatistics() {
+        Statistics stats = new Statistics();
+        stats.setNumberOfAvailableSeats(availableSeats.size());
+        stats.setNumberOfPurchasedTickets(takenSeats.size());
+        int count = 0;
+        for(Seat s: takenSeats) {
+            count += s.getTicket().getPrice();
+        }
+        stats.setCurrentIncome(count);
+        return stats;
     }
 }
