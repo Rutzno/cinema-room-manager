@@ -34,7 +34,7 @@ public class Cinema {
         for (int i = 0; i < totalRows; i++) {
             for (int j = 0; j < totalColumns; j++) {
                 ticketPrice = i + 1 <= 4 ? 10 : 8; // determination of ticket price
-                Ticket ticket = new Ticket(i + 1, j + 1, ticketPrice);
+                Seat ticket = new Seat(i + 1, j + 1, ticketPrice);
                 availableSeats.add(ticket);
             }
         }
