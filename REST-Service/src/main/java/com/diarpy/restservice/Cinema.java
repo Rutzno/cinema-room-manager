@@ -54,9 +54,9 @@ public class Cinema {
         return true;
     }
 
-    public Seat bookTicket(Ticket ticket) {
+    public Seat bookTicket(Seat ticket) {
         Seat result;
-        for(Ticket t: availableSeats) {
+        for(Seat t: availableSeats) {
             if (t.getRow() == ticket.getRow() && t.getColumn() == ticket.getColumn()) {
                 availableSeats.remove(t);
                 result = new Seat(UUID.randomUUID(), t);
