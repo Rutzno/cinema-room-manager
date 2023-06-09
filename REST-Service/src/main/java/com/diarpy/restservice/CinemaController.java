@@ -39,12 +39,8 @@ public class CinemaController {
     public ResponseEntity<Object> refundTicket(@RequestBody Seat seat) {
         String error3 = "Wrong token!";
         Seat result = cinema.refundTicket(seat.getToken().toString());
-        if (result != null) {
-            return ResponseEntity.ok()
-                    .body(Map.of("returned_ticket", result.getTicket()));
-        } else {
-            return ResponseEntity.badRequest()
-                    .body(String.format("{\"error\": \"%s\"}", error3));
-        }
+        return result != null ?
+                ResponseEntity.ok().body(Map.of("returned_ticket", result.getTicket())) :
+                ResponseEntity.badRequest().body(Map.of("error", error3));
     }
 }
