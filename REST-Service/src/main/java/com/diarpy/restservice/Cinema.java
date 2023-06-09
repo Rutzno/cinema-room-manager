@@ -20,7 +20,7 @@ import java.util.UUID;
 public class Cinema {
     private int totalRows;
     private int totalColumns;
-    private ArrayList<Ticket> availableSeats;
+    private ArrayList<Seat> availableSeats;
 
     @JsonIgnore
     private ArrayList<Seat> takenSeats;
