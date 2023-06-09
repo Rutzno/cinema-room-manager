@@ -20,7 +20,7 @@ import java.util.UUID;
 public class Cinema {
     private int totalRows;
     private int totalColumns;
-    private ArrayList<Seat> availableSeats;
+    private ArrayList<Ticket> availableSeats;
 
     @JsonIgnore
     private ArrayList<Seat> takenSeats;
@@ -34,19 +34,19 @@ public class Cinema {
         for (int i = 0; i < totalRows; i++) {
             for (int j = 0; j < totalColumns; j++) {
                 ticketPrice = i + 1 <= 4 ? 10 : 8; // determination of ticket price
-                Seat ticket = new Seat(i + 1, j + 1, ticketPrice);
+                Ticket ticket = new Ticket(i + 1, j + 1, ticketPrice);
                 availableSeats.add(ticket);
             }
         }
     }
 
-    public boolean isSeatWrong(Seat ticket) {
+    public boolean isSeatWrong(Ticket ticket) {
         return ticket.getRow() <= 0 || ticket.getRow() > totalRows ||
                 ticket.getColumn() <= 0 || ticket.getColumn() > totalColumns;
     }
 
-    public boolean isSeatTaken(Seat ticket) {
-        for(Seat t: availableSeats) {
+    public boolean isSeatTaken(Ticket ticket) {
+        for(Ticket t: availableSeats) {
             if (t.getRow() == ticket.getRow() && t.getColumn() == ticket.getColumn()) {
                 return false;
             }
@@ -54,9 +54,9 @@ public class Cinema {
         return true;
     }
 
-    public Seat bookTicket(Seat ticket) {
+    public Seat bookTicket(Ticket ticket) {
         Seat result;
-        for(Seat t: availableSeats) {
+        for(Ticket t: availableSeats) {
             if (t.getRow() == ticket.getRow() && t.getColumn() == ticket.getColumn()) {
                 availableSeats.remove(t);
                 result = new Seat(UUID.randomUUID(), t);
