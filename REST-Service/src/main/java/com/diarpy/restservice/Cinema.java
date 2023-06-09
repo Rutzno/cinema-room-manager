@@ -40,7 +40,7 @@ public class Cinema {
         }
     }
 
-    public boolean isSeatWrong(Ticket ticket) {
+    public boolean isSeatWrong(Seat ticket) {
         return ticket.getRow() <= 0 || ticket.getRow() > totalRows ||
                 ticket.getColumn() <= 0 || ticket.getColumn() > totalColumns;
     }
