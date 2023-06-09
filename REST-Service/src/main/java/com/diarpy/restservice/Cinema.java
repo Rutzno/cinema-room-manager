@@ -1,4 +1,4 @@
-package com.diarpy.restservice;;
+package com.diarpy.restservice;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;

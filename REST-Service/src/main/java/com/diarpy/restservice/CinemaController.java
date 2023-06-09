@@ -1,16 +1,9 @@
-package com.diarpy.restservice;
+package cinema;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-/**
- * @author Mack_TB
- * @since 1/06/2023
- * @version 1.0.22
- */
+import java.util.Map;
 
 @RestController
 public class CinemaController {
@@ -23,16 +16,29 @@ public class CinemaController {
     }
 
     @PostMapping("/purchase")
-    public ResponseEntity<Object> bookTicket(@RequestBody Seat seat) {
+    public ResponseEntity<Object> bookTicket(@RequestBody Ticket ticket) {
         String error1 = "The number of a row or a column is out of bounds!";
         String error2 = "The ticket has been already purchased!";
-        if (cinema.isSeatWrong(seat)) {
+        if (cinema.isSeatWrong(ticket)) {
             return ResponseEntity.badRequest()
                     .body(String.format("{\"error\": \"%s\"}", error1));
-        } else if (cinema.isSeatTaken(seat)) {
+        } else if (cinema.isSeatTaken(ticket)) {
             return ResponseEntity.badRequest()
                     .body(String.format("{\"error\": \"%s\"}", error2));
         }
-        return ResponseEntity.ok(cinema.bookTicket(seat));
+        return ResponseEntity.ok(cinema.bookTicket(ticket));
+    }
+
+    @PostMapping("/return")
+    public ResponseEntity<Object> refundTicket(@RequestBody Seat seat) {
+        String error3 = "Wrong token!";
+        Seat result = cinema.refundTicket(seat.getToken().toString());
+        if (result != null) {
+            return ResponseEntity.ok()
+                    .body(Map.of("returned_ticket", result.getTicket()));
+        } else {
+            return ResponseEntity.badRequest()
+                    .body(String.format("{\"error\": \"%s\"}", error3));
+        }
     }
 }
