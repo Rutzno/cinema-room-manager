@@ -48,11 +48,9 @@ public class CinemaController {
     @PostMapping("/stats")
     public ResponseEntity<Object> statistics(@RequestParam(required = false) String password) {
         String error4 = "The password is wrong!";
-        if (password != null && password.equals("super_secret")) {
-            return ResponseEntity.ok(cinema.getStatistics());
-        } else {
-            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
-                    .body(Map.of("error", error4));
-        }
+        return password != null && password.equals("super_secret") ?
+                ResponseEntity.ok(cinema.getStatistics()) :
+                ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                                .body(Map.of("error", error4));
     }
 }
